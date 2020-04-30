@@ -239,7 +239,7 @@ def vertices2joints(J_regressor, vertices):
         The location of the joints
     '''
 
-    return torch.einsum('bik,ji->bjk', [vertices, J_regressor])
+    return torch.einsum('bik,ji->bjk', [vertices, J_regressor]).contiguous()
 
 
 def blend_shapes(betas, shape_disps):
